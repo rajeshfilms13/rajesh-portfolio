@@ -10,133 +10,147 @@ const stories = [
     description:
       "A quiet young man struggles with love, fear, and the regret of words left unsaid.",
     concept:
-      "A reserved young man finds it difficult to express his feelings. When love enters his life, his silence and hesitation slowly create consequences he never expected. The story explores first love, emotional confusion, regret, and the pain of realizing that some moments cannot be brought back.",
+      "A reserved young man finds it difficult to express his feelings. His silence slowly changes the course of his life, exploring first love, emotional confusion, and regret.",
   },
   {
-    title: "PROPOSAL",
-    genre: "Romance / Emotional Drama",
+    title: "PROPSAL",
+    genre: "Romance / Emotional",
     format: "Short Film",
     description:
       "A lonely young man writes the proposal he never got the chance to say.",
     concept:
-      "After learning that the girl he loved has left before he could express his feelings, a lonely young man returns to his room and writes a proposal letter. The words take him into a dream where he finally says everything he wanted to say. When reality returns, the unsent letter becomes a symbol of a love that remained only in his imagination.",
+      "After hearing that the girl he loved has left, he writes a heartfelt proposal letter. The letter becomes a dream where he finally expresses everything he couldn't say.",
   },
   {
     title: "The Other Universe",
-    genre: "Science Fiction / Romance",
+    genre: "Sci-Fi / Romance",
     format: "Feature Film",
     description:
-      "An astronaut returns from a mission to discover that time has changed the life he left behind.",
+      "An astronaut returns to a world where time has changed everything.",
     concept:
-      "After a dangerous space mission involving a wormhole and an unstable star, an astronaut returns to a world where time has moved differently. His wife is now much older while he remains almost the same age. Messages from another version of himself force him to choose between an improved alternate life and the original life he once knew.",
+      "A wormhole mission causes time dilation. The hero returns to find his wife much older while he remains almost the same age.",
+  },
+  {
+    title: "Mental Hospital",
+    genre: "Psychological Drama",
+    format: "Feature Film",
+    description:
+      "A tragic love story told through the eyes of a mentally disturbed patient.",
+    concept:
+      "Reality and imagination slowly merge until the audience questions what was ever real.",
   },
 ];
 
 export default function StoryVault() {
-  const [selectedStory, setSelectedStory] = useState<
-    (typeof stories)[number] | null
-  >(null);
+  const [open, setOpen] = useState(false);
 
   return (
-    <section
-      id="stories"
-      className="bg-black px-5 py-20 text-white sm:px-8 sm:py-24 md:py-28"
-    >
-      <div className="mx-auto max-w-7xl">
-        <p className="text-center text-sm uppercase tracking-[0.35em] text-yellow-400">
-          Stories in Development
-        </p>
+    <>
+      <section
+        id="stories"
+        className="bg-black text-white py-28 px-8"
+      >
+        <div className="max-w-7xl mx-auto">
 
-        <h2 className="mt-5 text-center text-4xl font-bold sm:text-5xl md:text-6xl">
-          Story Vault
-        </h2>
+          <p className="text-center uppercase tracking-[0.3em] text-yellow-400">
+            Stories In Development
+          </p>
 
-        <p className="mx-auto mt-6 max-w-2xl text-center leading-7 text-gray-400">
-          Original stories exploring love, emotion, loneliness, memory,
-          and the choices that shape people.
-        </p>
+          <h2 className="text-6xl font-bold text-center mt-5">
+            Story Vault
+          </h2>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {stories.map((story) => (
-            <article
-              key={story.title}
-              className="group rounded-2xl border border-neutral-800 bg-neutral-950 p-8 transition duration-300 hover:-translate-y-2 hover:border-yellow-400/50"
+          <p className="text-center text-gray-400 max-w-2xl mx-auto mt-6 mb-16">
+            Original stories exploring emotion, relationships,
+            loneliness, science fiction and humanity.
+          </p>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+
+            {stories.map((story) => (
+              <div
+                key={story.title}
+                className="border border-neutral-800 rounded-2xl p-8 hover:border-yellow-400 transition duration-300"
+              >
+                <p className="text-yellow-400 text-sm">
+                  {story.format}
+                </p>
+
+                <h3 className="text-2xl font-bold mt-4">
+                  {story.title}
+                </h3>
+
+                <p className="text-gray-500 mt-2">
+                  {story.genre}
+                </p>
+
+                <p className="text-gray-400 mt-6 leading-7">
+                  {story.description}
+                </p>
+              </div>
+            ))}
+
+          </div>
+
+          <div className="flex justify-center mt-14">
+            <button
+              onClick={() => setOpen(true)}
+              className="border border-yellow-400 px-8 py-3 rounded-full text-yellow-400 hover:bg-yellow-400 hover:text-black transition"
             >
-              <p className="text-sm text-yellow-400">
-                {story.format}
-              </p>
+              MORE →
+            </button>
+          </div>
 
-              <h3 className="mt-4 text-2xl font-bold">
-                {story.title}
-              </h3>
-
-              <p className="mt-3 text-sm text-gray-500">
-                {story.genre}
-              </p>
-
-              <p className="mt-6 leading-7 text-gray-400">
-                {story.description}
-              </p>
-            </article>
-          ))}
         </div>
-      </div>
-      <div className="mt-12 flex justify-center"><button
-    className="rounded-full border border-yellow-400 px-8 py-3 text-yellow-400 transition hover:bg-yellow-400 hover:text-black">
-    MORE →</button>
-      </div>
-      {/* Concept popup */}
+      </section>
 
-      {selectedStory && (
+      {open && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 px-5 py-8 backdrop-blur-sm"
-          onClick={() => setSelectedStory(null)}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-center items-center px-5"
+          onClick={() => setOpen(false)}
         >
           <div
-            className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-neutral-700 bg-[#111] p-7 shadow-2xl sm:p-10"
-            onClick={(event) => event.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-[#111] border border-neutral-700 rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto p-8"
           >
-            <button
-              type="button"
-              onClick={() => setSelectedStory(null)}
-              aria-label="Close concept"
-              className="absolute right-5 top-4 text-3xl text-gray-400 transition hover:text-yellow-400"
-            >
-              ×
-            </button>
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-3xl font-bold">
+                Story Archive
+              </h2>
 
-            <p className="text-sm uppercase tracking-[0.25em] text-yellow-400">
-              {selectedStory.format}
-            </p>
+              <button
+                onClick={() => setOpen(false)}
+                className="text-3xl text-gray-400 hover:text-yellow-400"
+              >
+                ×
+              </button>
+            </div>
 
-            <h3 className="mt-4 pr-10 text-3xl font-bold sm:text-4xl">
-              {selectedStory.title}
-            </h3>
+            <div className="space-y-10">
 
-            <p className="mt-3 text-gray-500">
-              {selectedStory.genre}
-            </p>
+              {stories.map((story) => (
+                <div
+                  key={story.title}
+                  className="border-b border-neutral-800 pb-8"
+                >
+                  <h3 className="text-2xl font-bold">
+                    {story.title}
+                  </h3>
 
-            <div className="my-8 h-px bg-neutral-800" />
+                  <p className="text-yellow-400 mt-1">
+                    {story.genre} • {story.format}
+                  </p>
 
-            <h4 className="text-lg font-semibold text-white">
-              Concept
-            </h4>
+                  <p className="text-gray-300 mt-5 leading-8">
+                    {story.concept}
+                  </p>
+                </div>
+              ))}
 
-            <p className="mt-4 leading-8 text-gray-300">
-              {selectedStory.concept}
-            </p>
-
-            <button
-              type="button"
-              onClick={() => setSelectedStory(null)}
-              className="mt-10 rounded-full bg-yellow-400 px-6 py-3 font-medium text-black transition hover:bg-yellow-300"
-            >
-              Close
-            </button>
+            </div>
           </div>
         </div>
       )}
-    </section>
+    </>
   );
 }

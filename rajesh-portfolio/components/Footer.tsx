@@ -20,11 +20,11 @@ export default function Footer() {
           <div className="text-center md:text-right">
 
             <p className="text-gray-400">
-              📧 rajeshfilms13@gmail.com
+               rajeshfilms13@gmail.com
             </p>
 
             <p className="mt-2 text-gray-400">
-              📞 +91 8754141675
+               +91 8754141675
             </p>
 
           </div>

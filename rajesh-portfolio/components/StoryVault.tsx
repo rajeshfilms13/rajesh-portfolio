@@ -1,156 +1,112 @@
-"use client";
-
-import { useState } from "react";
-
-const stories = [
-  {
-    title: "கடல். வானம். காற்று.",
-    genre: "Romance / Drama",
-    format: "Feature Film",
-    description:
-      "A quiet young man struggles with love, fear, and the regret of words left unsaid.",
-    concept:
-      "A reserved young man finds it difficult to express his feelings. His silence slowly changes the course of his life, exploring first love, emotional confusion, and regret.",
-  },
-  {
-    title: "PROPSAL",
-    genre: "Romance / Emotional",
-    format: "Short Film",
-    description:
-      "A lonely young man writes the proposal he never got the chance to say.",
-    concept:
-      "After hearing that the girl he loved has left, he writes a heartfelt proposal letter. The letter becomes a dream where he finally expresses everything he couldn't say.",
-  },
-  {
-    title: "The Other Universe",
-    genre: "Sci-Fi / Romance",
-    format: "Feature Film",
-    description:
-      "An astronaut returns to a world where time has changed everything.",
-    concept:
-      "A wormhole mission causes time dilation. The hero returns to find his wife much older while he remains almost the same age.",
-  },
-  {
-    title: "Mental Hospital",
-    genre: "Psychological Drama",
-    format: "Feature Film",
-    description:
-      "A tragic love story told through the eyes of a mentally disturbed patient.",
-    concept:
-      "Reality and imagination slowly merge until the audience questions what was ever real.",
-  },
-];
-
 export default function StoryVault() {
-  const [open, setOpen] = useState(false);
+  const stories = [
+    {
+      title: "கடல். வானம். காற்று.",
+      format: "Feature Film",
+      genre: "Romance / Drama",
+      description:
+        "A quiet young man struggles with love, fear, and the regret of words left unsaid.",
+    },
+    {
+      title: "PROPSAL",
+      format: "Short Film",
+      genre: "Romance / Emotional",
+      description:
+        "A lonely young man writes the proposal he never got the chance to say.",
+    },
+    {
+      title: "The Other Universe",
+      format: "Feature Film",
+      genre: "Sci-Fi / Romance",
+      description:
+        "An astronaut returns to a world where time has changed everything.",
+    },
+    {
+      title: "Mental Hospital",
+      format: "Feature Film",
+      genre: "Psychological Drama",
+      description:
+        "A tragic love story where reality and imagination slowly become one.",
+    },
+  ];
 
   return (
-    <>
-      <section
-        id="stories"
-        className="bg-black text-white py-28 px-8"
-      >
-        <div className="max-w-7xl mx-auto">
+    <section
+      id="stories"
+      className="bg-black py-28 px-8 text-white"
+    >
+      <div className="mx-auto max-w-7xl">
 
-          <p className="text-center uppercase tracking-[0.3em] text-yellow-400">
-            Stories In Development
-          </p>
+        <p className="text-center text-sm uppercase tracking-[0.35em] text-yellow-400">
+          Stories In Development
+        </p>
 
-          <h2 className="text-6xl font-bold text-center mt-5">
-            Story Vault
-          </h2>
+        <h2 className="mt-5 text-center text-6xl font-bold">
+          Story Vault
+        </h2>
 
-          <p className="text-center text-gray-400 max-w-2xl mx-auto mt-6 mb-16">
-            Original stories exploring emotion, relationships,
-            loneliness, science fiction and humanity.
-          </p>
+        <p className="mx-auto mt-6 mb-20 max-w-2xl text-center text-gray-400 leading-8">
+          Original stories exploring love, emotion, loneliness,
+          science fiction, and the complexity of human relationships.
+        </p>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
 
-            {stories.map((story) => (
-              <div
-                key={story.title}
-                className="border border-neutral-800 rounded-2xl p-8 hover:border-yellow-400 transition duration-300"
-              >
-                <p className="text-yellow-400 text-sm">
-                  {story.format}
-                </p>
-
-                <h3 className="text-2xl font-bold mt-4">
-                  {story.title}
-                </h3>
-
-                <p className="text-gray-500 mt-2">
-                  {story.genre}
-                </p>
-
-                <p className="text-gray-400 mt-6 leading-7">
-                  {story.description}
-                </p>
-              </div>
-            ))}
-
-          </div>
-
-          <div className="flex justify-center mt-14">
-            <button
-              onClick={() => setOpen(true)}
-              className="border border-yellow-400 px-8 py-3 rounded-full text-yellow-400 hover:bg-yellow-400 hover:text-black transition"
+          {stories.map((story) => (
+            <div
+              key={story.title}
+              className="rounded-2xl border border-neutral-800 bg-[#090909] p-8 transition duration-300 hover:-translate-y-2 hover:border-yellow-400"
             >
-              MORE →
-            </button>
-          </div>
+              <p className="text-sm text-yellow-400">
+                {story.format}
+              </p>
+
+              <h3 className="mt-4 text-2xl font-bold">
+                {story.title}
+              </h3>
+
+              <p className="mt-2 text-gray-500">
+                {story.genre}
+              </p>
+
+              <p className="mt-6 leading-7 text-gray-400">
+                {story.description}
+              </p>
+            </div>
+          ))}
 
         </div>
-      </section>
 
-      {open && (
-        <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-center items-center px-5"
-          onClick={() => setOpen(false)}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-[#111] border border-neutral-700 rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto p-8"
+        {/* Contact Card */}
+
+        <div className="mx-auto mt-20 max-w-3xl rounded-3xl border border-yellow-400/30 bg-gradient-to-b from-[#111] to-[#070707] p-10 text-center">
+
+          <h3 className="text-3xl font-bold">
+            More Original Screenplays
+          </h3>
+
+          <p className="mt-6 leading-8 text-gray-400">
+            Additional feature films, short films, and series concepts
+            are available for producers, collaborators, and filmmakers
+            upon request.
+          </p>
+
+          <div className="mx-auto my-8 h-px w-32 bg-yellow-400" />
+
+          <p className="text-lg text-white">
+            Contact for more scripts
+          </p>
+
+          <a
+            href="mailto:rajeshfilms13@gmail.com"
+            className="mt-5 inline-block text-xl font-semibold text-yellow-400 transition hover:text-yellow-300"
           >
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-bold">
-                Story Archive
-              </h2>
+            rajeshfilms13@gmail.com
+          </a>
 
-              <button
-                onClick={() => setOpen(false)}
-                className="text-3xl text-gray-400 hover:text-yellow-400"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="space-y-10">
-
-              {stories.map((story) => (
-                <div
-                  key={story.title}
-                  className="border-b border-neutral-800 pb-8"
-                >
-                  <h3 className="text-2xl font-bold">
-                    {story.title}
-                  </h3>
-
-                  <p className="text-yellow-400 mt-1">
-                    {story.genre} • {story.format}
-                  </p>
-
-                  <p className="text-gray-300 mt-5 leading-8">
-                    {story.concept}
-                  </p>
-                </div>
-              ))}
-
-            </div>
-          </div>
         </div>
-      )}
-    </>
+
+      </div>
+    </section>
   );
 }

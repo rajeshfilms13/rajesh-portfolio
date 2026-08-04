@@ -51,18 +51,6 @@ export default function Contact() {
 
         {/* Contact Info */}
 
-        <div className="mt-16 space-y-3">
-
-          <p className="text-lg text-gray-300">
-            📧 rajeshfilms13@gmail.com
-          </p>
-
-          <p className="text-lg text-gray-300">
-            📞 +91 8754141675
-          </p>
-
-        </div>
-
         <div className="mx-auto mt-12 h-px w-32 bg-yellow-400" />
 
         <p className="mt-8 text-gray-500">

@@ -10,64 +10,72 @@ export default function Filmography() {
   const [activeFilter, setActiveFilter] = useState("All Films");
 
   const filteredFilms = films.filter((film) => {
-    if (activeFilter === "All Films") {
-      return true;
-    }
+    if (activeFilter === "All Films") return true;
 
-    return film.genre.toLowerCase().includes(
-      activeFilter.toLowerCase()
-    );
+    return film.genre
+      .toLowerCase()
+      .includes(activeFilter.toLowerCase());
   });
 
   return (
-    <section id="films" className="bg-black px-5 py-20 text-white sm:px-8 sm:py-24 md:py-28">
-      <div className="mx-auto max-w-7xl">
+    <section
+      id="films"
+      className="bg-black text-white py-20 sm:py-24 lg:py-32 px-5 sm:px-8 lg:px-12"
+    >
+      <div className="max-w-7xl mx-auto">
 
-        <p className="text-center text-sm uppercase tracking-[0.35em] text-yellow-400">
+        <p className="uppercase tracking-[0.35em] text-yellow-400 text-center text-xs sm:text-sm">
           Selected Work
         </p>
 
-        <h2 className="mt-5 text-center text-4xl font-bold sm:text-5xl md:text-6xl">
+        <h2 className="mt-5 text-center text-4xl sm:text-5xl lg:text-6xl font-bold">
           Featured Films
         </h2>
 
-        <p className="mx-auto mt-6 max-w-2xl text-center leading-7 text-gray-400">
-          A collection of short films exploring emotion, relationships,
-          comedy, and social themes.
+        <p className="mt-6 mx-auto max-w-2xl text-center text-gray-400 leading-8 text-base sm:text-lg">
+          A collection of short films exploring emotion,
+          relationships, comedy, and social themes.
         </p>
 
-        {/* Filter buttons */}
+        {/* Filters */}
 
         <div className="mt-12 flex flex-wrap justify-center gap-3">
+
           {filters.map((filter) => (
+
             <button
               key={filter}
-              type="button"
               onClick={() => setActiveFilter(filter)}
-              className={
+              className={`rounded-full px-5 py-2 text-sm transition-all duration-300
+              ${
                 activeFilter === filter
-                  ? "rounded-full bg-yellow-400 px-5 py-2 text-sm font-medium text-black transition"
-                  : "rounded-full border border-neutral-700 px-5 py-2 text-sm text-gray-300 transition hover:border-yellow-400 hover:text-yellow-400"
-              }
+                  ? "bg-yellow-400 text-black"
+                  : "border border-neutral-700 text-gray-300 hover:border-yellow-400 hover:text-yellow-400"
+              }`}
             >
               {filter}
             </button>
+
           ))}
+
         </div>
 
-        {/* Film cards */}
+        {/* Cards */}
 
-        <div className="mt-12 grid gap-7 sm:gap-10 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
           {filteredFilms.map((film) => (
-            <Filmcard key={film.slug} {...film} />
+            <Filmcard
+              key={film.slug}
+              {...film}
+            />
           ))}
-        </div>
 
-        {/* Empty state */}
+        </div>
 
         {filteredFilms.length === 0 && (
-          <p className="mt-14 text-center text-gray-500">
-            No films found in this category.
+          <p className="text-center text-gray-500 mt-16">
+            No films available.
           </p>
         )}
 
